@@ -17,12 +17,14 @@ const LinkForm = (props) => {
 
         setValues({...values,[name]:value})
 
-        props.addOrEditLink(values)
+   
     }
     
     const handleSubmit = (e) =>{
 
         e.preventDefault();
+        props.addOrEditLink(values)
+        setValues({...initialStateValues})
 
         console.log(values)
         
@@ -38,8 +40,9 @@ const LinkForm = (props) => {
                         className="form-control" 
                         placeholder="https" 
                         name="url"
-                        onChange={handleInputChange}/>
-                </div>
+                        onChange={handleInputChange} value={values.url}/>
+                </div> 
+                
                 <div className="form-group input-group">
                     <div className="bg-ligth input-group-text">
                         <i className="material-icons">create</i>
@@ -47,11 +50,12 @@ const LinkForm = (props) => {
                             <input type="text" 
                             className="form-control" 
                             placeholder="name" 
-                            name="url" onChange={handleInputChange}/>
+                            name="name" onChange={handleInputChange} value={values.name}/>
                 </div>
+
         <div className="form-group ">
 
-                <textarea name="description"  rows="3" className="form-control" placeholder="write a description" onChange={handleInputChange}>
+                <textarea name="description"   rows="3" className="form-control" placeholder="write a description" onChange={handleInputChange} value={values.description}>
 
                 </textarea>
 
